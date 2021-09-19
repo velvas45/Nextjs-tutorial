@@ -1,9 +1,10 @@
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.css';
+import HomePage from '../layouts/pages';
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <h3>Welcome</h3>
-    </div>
-  )
+    <>
+      <HomePage />
+    </>
+  );
 }
