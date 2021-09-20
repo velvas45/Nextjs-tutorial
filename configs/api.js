@@ -7,6 +7,7 @@ const host = axios.create({
 const api = {
   methodGet: (page) => host.get(`users?page=${page}`),
   methodPost: (data) => host.post('users', { ...data }),
+  methodSingleGet: (id) => host.get(`users/${id}`),
 };
 
 export default api;
