@@ -1,7 +1,3 @@
-import axios from 'axios';
+import API from './api';
 
-const host = axios.create({
-  baseURL: process.env.baseUrl,
-});
-
-export { host };
+export { API };

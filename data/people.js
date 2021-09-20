@@ -58,7 +58,7 @@ export function getDummyData() {
   return DUMMY_PEOPLE.data;
 }
 
-export function getFilteredEvents(filter) {
+export function getFilteredPeople(filter) {
   let filteredPeople = DUMMY_PEOPLE.data.filter((people) => {
     return (
       people.first_name.search(filter) != -1 ||
@@ -67,6 +67,17 @@ export function getFilteredEvents(filter) {
   });
 
   if (filter.length == 0) return DUMMY_PEOPLE.data;
+
+  return filteredPeople;
+}
+
+export function getFilteredPeopleApi(filter, data) {
+  let filteredPeople = data.filter((people) => {
+    return (
+      people.first_name.search(filter) != -1 ||
+      people.last_name.search(filter) != -1
+    );
+  });
 
   return filteredPeople;
 }
