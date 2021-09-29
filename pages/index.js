@@ -9,8 +9,8 @@ export default function Home() {
 
   useEffect(() => {
     (async function () {
-      const response = await API.methodGet();
-      const { data } = response.data;
+      const response = await API.methodGet(1);
+      const data = response.data;
       setPeoples(data);
     })();
   }, []);
@@ -25,7 +25,7 @@ export default function Home() {
     if (inputData.length == 0 || filteredData == 'not found') {
       (async function () {
         const response = await API.methodGet();
-        const { data } = response.data;
+        const data = response.data;
         setPeoples(data);
       })();
     }
@@ -34,7 +34,25 @@ export default function Home() {
     setPeoples(filteredData);
   };
 
+  // function pagination
+  const onPagination = (page) => {
+    (async function () {
+      const response = await API.methodGet(page);
+      const data = response.data;
+      setPeoples(data);
+      window.scrollTo(0, 0);
+    })();
+  };
+
   return (
-    <>{peoples && <HomePage peoples={peoples} funcFilter={filterPeople} />}</>
+    <>
+      {peoples && (
+        <HomePage
+          peoples={peoples}
+          funcFilter={filterPeople}
+          funcPagination={onPagination}
+        />
+      )}
+    </>
   );
 }

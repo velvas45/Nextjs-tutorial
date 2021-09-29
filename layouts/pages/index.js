@@ -5,7 +5,7 @@ import UserLists from '../../components/user-lists';
 
 import { API } from '../../configs';
 
-function HomePage({ peoples, funcFilter }) {
+function HomePage({ peoples, funcFilter, funcPagination }) {
   // const [peoples, setPeoples] = useState([]);
   const [show, setShow] = useState(false);
   const [postPeople, setPostPeople] = useState({
@@ -98,7 +98,9 @@ function HomePage({ peoples, funcFilter }) {
           </Col>
         </Row>
       )}
-      {peoples.length > 0 && <UserLists peoples={peoples} />}
+      {peoples?.data?.length > 0 && (
+        <UserLists peoples={peoples} funcPagination={funcPagination} />
+      )}
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
